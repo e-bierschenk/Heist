@@ -7,6 +7,7 @@ namespace Heist
         static void Main(string[] args)
         {
             Crew crew = new Crew();
+            Bank bank = new Bank();
             Console.WriteLine("Plan your heist!");
             while (true)
             {
@@ -24,18 +25,24 @@ namespace Heist
                 Crony crony = new Crony(name, skill, courage);
                 crew.CrewList.Add(crony);
             }
-            try
+            
+            if(crew.GetCrewSkill() >= bank.Difficulty)
             {
-                Console.WriteLine($"There are {crew.CrewList.Count} members in your crew:\n");
-                foreach (Crony crony in crew.CrewList)
-                {
-                    Console.WriteLine(crony);
-                }
+                Console.WriteLine("You did it.  Good job.");
             }
-            catch
+            else
             {
-                Console.WriteLine("There is no one in your crew... :(");
+                Console.WriteLine("You did not do it.");
             }
+
+            // try
+            // {
+            //     crew.PrintCrew();
+            // }
+            // catch
+            // {
+            //     Console.WriteLine("There is no one in your crew... :(");
+            // }
         }
     }
 }
