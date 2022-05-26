@@ -26,13 +26,18 @@ namespace Heist
                 crew.CrewList.Add(crony);
             }
             
+            int luck = new Random().Next(-10, 11);
+            bank.Difficulty += luck;
+
+            Console.WriteLine($"\nYour crew has {crew.GetCrewSkill()} skill.");
+            Console.WriteLine($"Look out, the bank has a difficulty rating of {bank.Difficulty}.\n");
             if(crew.GetCrewSkill() >= bank.Difficulty)
             {
-                Console.WriteLine("You did it.  Good job.");
+                Console.WriteLine("This...crew...is...good. Great success!");
             }
             else
             {
-                Console.WriteLine("You did not do it.");
+                Console.WriteLine("You did not do it. Your crew is dead.");
             }
 
             // try
