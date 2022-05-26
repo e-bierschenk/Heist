@@ -17,7 +17,7 @@ namespace Heist
 
         public override string ToString()
         {
-            return $"          Name: {Name} \n   Skill Level: {SkillLevel}\nCourage Factor: {CourageFactor}";
+            return $"          Name: {Name} \n   Skill Level: {SkillLevel}\nCourage Factor: {CourageFactor}\n";
         }
     }
 }
