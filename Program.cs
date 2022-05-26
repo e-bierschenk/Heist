@@ -8,7 +8,11 @@ namespace Heist
         {
             Crew crew = new Crew();
             Bank bank = new Bank();
-            Console.WriteLine("Plan your heist!");
+            Console.WriteLine("Plan your heist!\n\n");
+
+            Console.Write("How difficult of a heist would you like to attempt?: ");
+            bank.Difficulty = int.Parse(Console.ReadLine());
+
             while (true)
             {
                 Console.Write("Enter your Crony's name: ");
@@ -28,7 +32,7 @@ namespace Heist
 
             Console.Write("How many times would you like to run the simulation?: ");
             int trials = int.Parse(Console.ReadLine());
-
+            int successes = 0;
             for (int i = 0; i < trials; i++)
             {
                 int luck = new Random().Next(-10, 11);
@@ -39,12 +43,14 @@ namespace Heist
                 if (crew.GetCrewSkill() >= bank.Difficulty)
                 {
                     Console.WriteLine("This...crew...is...good. Great success!");
+                    successes++;
                 }
                 else
                 {
                     Console.WriteLine("You did not do it. Your crew is dead.");
                 }
             }
+            Console.WriteLine($"Your crew succeded {successes} times, and failed {trials - successes} times.");
         }
     }
 }
