@@ -25,29 +25,26 @@ namespace Heist
                 Crony crony = new Crony(name, skill, courage);
                 crew.CrewList.Add(crony);
             }
-            
-            int luck = new Random().Next(-10, 11);
-            bank.Difficulty += luck;
 
-            Console.WriteLine($"\nYour crew has {crew.GetCrewSkill()} skill.");
-            Console.WriteLine($"Look out, the bank has a difficulty rating of {bank.Difficulty}.\n");
-            if(crew.GetCrewSkill() >= bank.Difficulty)
-            {
-                Console.WriteLine("This...crew...is...good. Great success!");
-            }
-            else
-            {
-                Console.WriteLine("You did not do it. Your crew is dead.");
-            }
+            Console.Write("How many times would you like to run the simulation?: ");
+            int trials = int.Parse(Console.ReadLine());
 
-            // try
-            // {
-            //     crew.PrintCrew();
-            // }
-            // catch
-            // {
-            //     Console.WriteLine("There is no one in your crew... :(");
-            // }
+            for (int i = 0; i < trials; i++)
+            {
+                int luck = new Random().Next(-10, 11);
+                bank.Difficulty += luck;
+
+                Console.WriteLine($"\nYour crew has {crew.GetCrewSkill()} skill.");
+                Console.WriteLine($"Look out, the bank has a difficulty rating of {bank.Difficulty}.\n");
+                if (crew.GetCrewSkill() >= bank.Difficulty)
+                {
+                    Console.WriteLine("This...crew...is...good. Great success!");
+                }
+                else
+                {
+                    Console.WriteLine("You did not do it. Your crew is dead.");
+                }
+            }
         }
     }
 }
